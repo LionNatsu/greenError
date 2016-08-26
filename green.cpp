@@ -19,8 +19,8 @@ void do_compress(string src, string dst) {
 
   auto *in_buffer = new uint8_t[image->w*image->h*3];
   for (int x = 0; x < image->w; x++) for (int y = 0; y < image->h; y++) {
-    uint8_t *i = (uint8_t *)image->pixels + y*image->pitch + x*image->format->BytesPerPixel;
-    uint8_t *o = &in_buffer[y*image->w*3 + x*3];
+    auto *i = (uint8_t *)image->pixels + y*image->pitch + x*image->format->BytesPerPixel;
+    auto *o = &in_buffer[y*image->w*3 + x*3];
 
     // taken from jcolor.c in libjpeg
     #if 0   // 16bit - precise but slow
