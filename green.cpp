@@ -23,7 +23,7 @@ void do_compress(string src, string dst) {
     uint8_t *o = &in_buffer[y*image->w*3 + x*3];
 
     // taken from jcolor.c in libjpeg
-    #if 1   // 16bit - precise but slow
+    #if 0   // 16bit - precise but slow
        #define CYR     19595   // 0.299
        #define CYG     38470   // 0.587
        #define CYB      7471   // 0.114
@@ -53,8 +53,9 @@ void do_compress(string src, string dst) {
        #define CSHIFT  8
     #endif
 
+    int R=i[0], G=i[1], B=i[2];
+
     #if 0 // Shift or float-divide (shift in Skia)
-      int R=i[0], G=i[1], B=i[2];
       int Y = (R*CYR + G*CYG + B*CYB) >> CSHIFT;
       int U = (R*CUR + G*CUG + B*CUB) >> CSHIFT;
       int V = (R*CVR + G*CVG + B*CVB) >> CSHIFT;
@@ -63,7 +64,6 @@ void do_compress(string src, string dst) {
       o[1] = U + 128;
       o[2] = V + 128;
     #else
-      int R=i[0], G=i[1], B=i[2];
       double Y = (R*CYR + G*CYG + B*CYB) / pow(2,CSHIFT);
       double U = (R*CUR + G*CUG + B*CUB) / pow(2,CSHIFT);
       double V = (R*CVR + G*CVG + B*CVB) / pow(2,CSHIFT);
