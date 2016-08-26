@@ -1,0 +1,2 @@
+#!/bin/bash
+clang++ green.cpp -o green -ljpeg -lSDL_image -std=c++11
