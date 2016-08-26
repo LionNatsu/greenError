@@ -90,7 +90,7 @@ void do_compress(string src, string dst) {
 int main(int argc, char **argv) {
   if(argc != 3) return -1;
   string source(argv[1]), target(argv[2]);
-  do_compress("lena_std.tiff", target);
+  do_compress(source, target);
   for (size_t i = 0; i < 30; i++) {
     do_compress(target, target);
   }
