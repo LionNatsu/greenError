@@ -1,0 +1,4 @@
+green
+.*
+!.git
+!.gitignore
