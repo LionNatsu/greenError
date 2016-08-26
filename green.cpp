@@ -64,9 +64,9 @@ void do_compress(string src, string dst) {
       o[1] = U + 128;
       o[2] = V + 128;
     #else
-      double Y = (R*CYR + G*CYG + B*CYB) / pow(2,CSHIFT);
-      double U = (R*CUR + G*CUG + B*CUB) / pow(2,CSHIFT);
-      double V = (R*CVR + G*CVG + B*CVB) / pow(2,CSHIFT);
+      double Y = (R*CYR + G*CYG + B*CYB) / pow(2, CSHIFT);
+      double U = (R*CUR + G*CUG + B*CUB) / pow(2, CSHIFT);
+      double V = (R*CVR + G*CVG + B*CVB) / pow(2, CSHIFT);
 
       o[0] = round(Y);
       o[1] = round(U + 128);
